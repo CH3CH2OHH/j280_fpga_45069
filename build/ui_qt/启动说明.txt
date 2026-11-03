@@ -1,0 +1,17 @@
+﻿J280 上位机控制系统 — 便携版
+
+启动：双击 J280上位机控制系统.exe
+
+目录说明：
+  J280上位机控制系统.exe   主程序
+  runtime\                 Python / Qt / QtWebEngine 运行时，请勿删除或改名
+  res\                     HTML / CSS / JS / three.js，可整体替换
+  data\config0.json        默认参数（GUI 启动与 FPGA 上电默认一致），可编辑
+  data\ui_state.json       上次端口/曲线/卡片布局；删除可恢复默认布局
+
+注意：
+  - 需要 Windows 10/11 x64，建议 1600x1000 或 1280x800 以上分辨率；
+  - 串口 115200 8N1；无硬件时界面可正常打开；
+  - 通信异常时请使用实体急停，软件按钮不能替代硬件保护；
+  - 自检（无界面验证）：
+      J280上位机控制系统.exe --selftest selftest.json --selftest-shot selftest.png

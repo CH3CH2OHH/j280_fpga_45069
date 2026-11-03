@@ -1,0 +1,2 @@
+build/ui_qt/runtime/PySide6/Qt6WebEngineCore.dll filter=lfs diff=lfs merge=lfs -text
+build/ui_qt/runtime/PySide6/resources/qtwebengine_devtools_resources.debug.pak filter=lfs diff=lfs merge=lfs -text

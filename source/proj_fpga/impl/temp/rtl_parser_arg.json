@@ -1,0 +1,132 @@
+{
+    "Device": "GW2A-55C",
+    "Files": [
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/adc_par.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ang_calc.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/angle_rate_observer.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/bal_ctl.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/cfg_regs.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/clk_rst.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/debounce.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/dig4.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/dig5.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/encoder_quad.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/font8x16.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/key_debounce.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/msg_tx.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/position_hold.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/pwm_gen.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/speed_win.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/spi_master_driver.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/spi_screen_top.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/spi_tft_screen_driver.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/spi_tft_screen_flush.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/spi_tft_screen_init.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/swingup_ctl.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/tb6612_drv.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/tick_gen.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/uart_rx.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/uart_tx.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_draw.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_fb.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_panel_ctrl.v",
+            "Type": "verilog"
+        }
+    ],
+    "IncludePath": [
+    ],
+    "LoopLimit": 2000,
+    "ResultFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/impl/temp/rtl_parser.result",
+    "Top": "",
+    "VerilogStd": "verilog_2001",
+    "VhdlStd": "vhdl_93"
+}

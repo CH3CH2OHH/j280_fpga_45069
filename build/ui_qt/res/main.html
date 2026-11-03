@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="dark">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J280 上位机控制系统</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 启动遮罩：脚本加载完成后由 app.js 淡出 -->
+  <div id="bootOverlay" class="boot-overlay">
+    <div class="boot-mark">J280</div>
+    <div class="boot-sub">上位机控制系统</div>
+    <div class="boot-bar"><span></span></div>
+    <div id="bootText" class="boot-text">正在初始化界面…</div>
+  </div>
+
+  <div id="app">
+    <!-- ============================ 顶部工具栏 ============================ -->
+    <header id="topbar" class="topbar">
+      <div class="topbar-main">
+        <div class="brand">
+          <div class="brand-glyph">◈</div>
+          <div class="brand-text">
+            <h1><span class="brand-name">J280</span><span class="brand-cn">上位机控制系统</span></h1>
+          </div>
+        </div>
+
+        <div class="cluster conn-cluster">
+          <span class="cluster-label">串口</span>
+          <select id="portSelect" class="hud-select" title="选择 FPGA 串口"></select>
+          <button id="btnRefreshPorts" class="hud-btn icon" title="刷新串口列表">⟳</button>
+          <button id="btnConnect" class="hud-btn primary">连接</button>
+          <span id="connStatus" class="chip" data-state="idle">未连接</span>
+        </div>
+
+        <div class="cluster mode-cluster">
+          <button id="btnMode1" class="hud-btn go" title="发送全部参数后请求 MODE 1（手动稳定）">
+            手动平衡 <b>MODE 1</b>
+          </button>
+          <button id="btnMode2" class="hud-btn go" title="发送全部参数后请求 MODE 2（自动起摆）">
+            自动起摆 <b>MODE 2</b>
+          </button>
+          <button id="btnMode3" class="hud-btn go" title="发送全部参数后请求 MODE 3（绝对定位，使用 TURNS_POSTGT）">
+            绝对定位 <b>MODE 3</b>
+          </button>
+          <button id="btnStop" class="hud-btn danger" title="立即发送 MODE 0（软件停机）">
+            ■ 停机
+          </button>
+          <button id="btnSendAll" class="hud-btn" title="把当前全部参数一次性下发到 FPGA">全量下发</button>
+        </div>
+
+        <div class="cluster file-cluster">
+          <button id="btnFullscreenOn" class="hud-btn" title="进入全屏（F11）">进入全屏</button>
+          <button id="btnFullscreenOff" class="hud-btn" title="退出全屏（Esc）" hidden>退出全屏</button>
+          <button id="btnSaveConfig" class="hud-btn" title="把当前参数保存为 JSON 文件">保存配置</button>
+          <button id="btnLoadConfig" class="hud-btn" title="从 JSON 文件载入参数（只填入输入框）">载入配置</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================================ 工作区 ================================ -->
+    <main id="stage" class="stage">
+      <!-- 左侧参数组书签：点击显示/隐藏对应参数卡片 -->
+      <aside id="bookmarkRail" class="bookmark-rail" aria-label="参数组书签"></aside>
+
+      <!-- 3D 摆杆 / 摆臂视口：参数卡片浮在其上，不再保留左侧固定停靠区 -->
+      <section id="viewport" class="viewport">
+        <div id="model3d" class="model3d"></div>
+        <div class="viewport-corner tl"></div>
+        <div class="viewport-corner tr"></div>
+        <div class="viewport-corner bl"></div>
+        <div class="viewport-corner br"></div>
+
+        <div id="metricStrip" class="metric-strip">
+          <div class="metric-card" data-metric="ang">
+            <span class="metric-label">ANG <em>°</em></span>
+            <strong id="metricAng" class="metric-value">--</strong>
+          </div>
+          <div class="metric-card" data-metric="ref">
+            <span class="metric-label">REF <em>°</em></span>
+            <strong id="metricRef" class="metric-value">--</strong>
+          </div>
+          <div class="metric-card" data-metric="raw">
+            <span class="metric-label">RAW <em>ADC</em></span>
+            <strong id="metricRaw" class="metric-value">--</strong>
+          </div>
+          <div class="metric-card" data-metric="pos">
+            <span class="metric-label">POS <em>count</em></span>
+            <strong id="metricPos" class="metric-value">--</strong>
+          </div>
+          <div class="metric-card" data-metric="spd">
+            <span class="metric-label">SPD <em>count/s</em></span>
+            <strong id="metricSpd" class="metric-value">--</strong>
+          </div>
+          <div class="metric-card" data-metric="dut">
+            <span class="metric-label">DUT <em>duty</em></span>
+            <strong id="metricDut" class="metric-value">--</strong>
+          </div>
+        </div>
+
+        <!-- MODE / 接管状态 / 位置误差：不再占用顶部整行状态栏 -->
+        <div id="statusHud" class="status-hud" title="模式 / 状态 / 位置误差 / 绝对计数 / 来源与保持">
+          <span id="modeText" class="status-hud-item">MODE --</span>
+          <span id="balanceText" class="status-hud-item">等待遥测</span>
+          <span id="positionErrorText" class="status-hud-item">位置误差 --</span>
+          <span id="absText" class="status-hud-item">ABS --</span>
+          <span id="srcHldText" class="status-hud-item">SRC -- · HLD --</span>
+        </div>
+
+        <div id="analysisBar" class="analysis-bar">
+          <div class="analysis-head">
+            <span class="analysis-title">摆动分析</span>
+            <span id="analysisSummary" class="analysis-summary">等待数据（需要 ≥1 s 有效遥测）</span>
+          </div>
+          <div id="analysisHint" class="analysis-hint"></div>
+        </div>
+      </section>
+
+      <!-- 右侧曲线与事件 -->
+      <section id="chartsPane" class="charts-pane">
+        <div id="chartToolbar" class="chart-toolbar">
+          <div class="toolbar-row">
+            <label class="field">
+              <span>波形</span>
+              <select id="displayMode" class="hud-select">
+                <option>趋势</option>
+                <option>原始</option>
+                <option>叠加</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>平滑</span>
+              <select id="trendMs" class="hud-select">
+                <option>20 ms</option>
+                <option selected>40 ms</option>
+                <option>80 ms</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>时间窗</span>
+              <select id="plotWindow" class="hud-select">
+                <option>5 秒</option>
+                <option selected>10 秒</option>
+                <option>30 秒</option>
+                <option>60 秒</option>
+              </select>
+            </label>
+            <label class="hud-check" title="冻结画面便于读数；数据仍在后台记录（空格）">
+              <input id="pauseToggle" type="checkbox"><span>暂停</span><kbd>空格</kbd>
+            </label>
+            <label class="hud-check" title="锁定当前 Y 轴范围，便于比较前后两次调参的幅度">
+              <input id="lockYToggle" type="checkbox"><span>锁定Y</span>
+            </label>
+          </div>
+          <div class="toolbar-row record-row">
+            <div class="record-group">
+              <button id="btnRecordStart" class="hud-btn small" title="清空记录缓冲并开始逐帧记录；实时曲线不受影响">开始记录</button>
+              <button id="btnRecordSave" class="hud-btn small" disabled title="停止记录并选择 CSV 路径保存">停止并保存…</button>
+              <span id="recordStatus" class="status-mini">未记录</span>
+            </div>
+            <div class="buffer-group">
+              <span id="sampleText" class="status-mini">已收 0 帧</span>
+              <button id="btnClear" class="hud-btn small" title="清空实时显示缓冲">清空显示</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="chartStack" class="chart-stack">
+          <div class="chart-box" data-chart="angle">
+            <div class="chart-head">
+              <span class="chart-accent"></span>
+              <span class="chart-title">摆杆角度</span>
+              <span class="chart-unit">°</span>
+            </div>
+            <canvas id="chartAngle"></canvas>
+          </div>
+          <div class="chart-box" data-chart="position">
+            <div class="chart-head">
+              <span class="chart-accent"></span>
+              <span class="chart-title">编码器相位</span>
+              <span class="chart-unit">count</span>
+            </div>
+            <canvas id="chartPosition"></canvas>
+          </div>
+          <div class="chart-box" data-chart="speed">
+            <div class="chart-head">
+              <span class="chart-accent"></span>
+              <span class="chart-title">摆臂速度</span>
+              <span class="chart-unit">count/s</span>
+            </div>
+            <canvas id="chartSpeed"></canvas>
+          </div>
+          <div class="chart-box" data-chart="duty">
+            <div class="chart-head">
+              <span class="chart-accent"></span>
+              <span class="chart-title">电机输出</span>
+              <span class="chart-unit">duty</span>
+            </div>
+            <canvas id="chartDuty"></canvas>
+          </div>
+          <div class="chart-box" data-chart="raw">
+            <div class="chart-head">
+              <span class="chart-accent"></span>
+              <span class="chart-title">ADC 原始值</span>
+              <span class="chart-unit">ADC</span>
+            </div>
+            <canvas id="chartRaw"></canvas>
+          </div>
+        </div>
+
+        <div id="eventLog" class="event-log">
+          <div class="event-log-head">
+            <span class="event-log-title">事件日志</span>
+            <button id="btnClearEvents" class="mini-btn" title="清空事件日志">清空</button>
+          </div>
+          <ul id="eventList" class="event-list"></ul>
+        </div>
+      </section>
+
+      <!-- 半透明可拖动参数卡片层（卡片由 app.js 动态创建） -->
+      <div id="cardLayer" class="card-layer"></div>
+    </main>
+  </div>
+
+  <!-- 绝对定位目标卡片模板：运行时移入可拖动参数卡片（x 圈 + y 相位） -->
+  <div id="absCardTemplate" hidden>
+    <div class="abs-body">
+      <section class="abs-turns-panel">
+        <div class="abs-panel-label">
+          <span>整圈数 <b>x</b></span>
+          <span class="abs-hint">−32 … +32 圈</span>
+        </div>
+        <div class="abs-turn-readout">
+          <button id="absTurnsMinus" class="abs-step" type="button" title="减少一圈">−</button>
+          <input id="absTurnsInput" class="abs-turn-input" type="text" inputmode="numeric" spellcheck="false" autocomplete="off" aria-label="整圈数">
+          <small>圈</small>
+          <button id="absTurnsPlus" class="abs-step" type="button" title="增加一圈">+</button>
+        </div>
+        <canvas id="absTurnsCanvas" class="abs-turns-canvas" tabindex="0"
+                role="slider" aria-label="整圈数选择"></canvas>
+        <div class="abs-turn-scale"><span>−32</span><span>−16</span><span>0</span><span>+16</span><span>+32</span></div>
+      </section>
+
+      <section class="abs-phase-panel">
+        <div class="abs-panel-label">
+          <span>单圈相位 <b>y</b></span>
+          <span class="abs-hint">−520 … +519</span>
+        </div>
+        <canvas id="absPhaseCanvas" class="abs-phase-canvas" tabindex="0"
+                role="slider" aria-label="相位选择"></canvas>
+        <div class="abs-phase-input-row">
+          <input id="absPhaseInput" class="abs-phase-input" type="text" inputmode="numeric" spellcheck="false" autocomplete="off" aria-label="相位">
+        </div>
+        <div id="absPhaseLimit" class="abs-phase-limit" hidden>当前整圈接近 ±32768 边界，相位可用范围被截断</div>
+      </section>
+    </div>
+
+    <footer class="abs-foot">
+      <div class="abs-buttons">
+        <button id="absHideCard" class="hud-btn" type="button">收起</button>
+        <button id="absApply" class="hud-btn" type="button">应用</button>
+        <button id="absApplySend" class="hud-btn go" type="button">应用并发送</button>
+      </div>
+    </footer>
+  </div>
+
+  <div id="tooltip" class="tooltip" hidden></div>
+  <div id="toastLayer" class="toast-layer"></div>
+  <input id="fileInputConfig" class="visually-hidden" type="file" accept=".json,application/json">
+  <div id="errorBanner" class="error-banner" hidden></div>
+
+  <!-- 依赖脚本：全部使用经典 script（QWebEngine 以 file:// 加载，ES module 会被 CORS 拦截） -->
+  <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+  <script src="vendor/three.min.js"></script>
+  <script src="js/params.js"></script>
+  <script src="js/cards.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/model3d.js"></script>
+  <script src="js/bridge.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

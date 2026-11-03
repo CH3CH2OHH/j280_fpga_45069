@@ -1,0 +1,8 @@
+{
+  "ui_version": 3,
+  "port": "COM9",
+  "plot_window": "10 秒",
+  "display_mode": "趋势",
+  "trend_ms": "40 ms",
+  "cards": {}
+}

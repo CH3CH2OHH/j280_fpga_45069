@@ -1,0 +1,3 @@
+source/proj_fpga为fpga固件，通过gowin平台进行编译；
+source/ui_project_qt为qt工程，用qt打开构建（也可以自行配置外部python解释环境，按照工程内约定安装对应版本三方库即可）；
+build/ 为ui工程和fpga工程的构建结果。

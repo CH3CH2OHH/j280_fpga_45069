@@ -1,0 +1,3 @@
+# 打包依赖：先安装运行依赖，再安装 PyInstaller
+-r requirements.txt
+pyinstaller>=6.0,<7

@@ -1,0 +1,5 @@
+[project]
+name = "PySide Project"
+
+[tool.pyside6-project]
+files = ["./CustomWidget/CustomWnd.py", "./CustomWidget/CustomWnd.ui", "main.py", "wndTool.py"]

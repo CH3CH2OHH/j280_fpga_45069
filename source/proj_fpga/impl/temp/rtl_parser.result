@@ -1,0 +1,378 @@
+[
+    {
+        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+        "InstLine": 30,
+        "InstName": "j280_top",
+        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+        "ModuleLine": 30,
+        "ModuleName": "j280_top",
+        "SubInsts": [
+            {
+                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+                "InstLine": 84,
+                "InstName": "u_clk",
+                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/clk_rst.v",
+                "ModuleLine": 25,
+                "ModuleName": "clk_rst"
+            },
+            {
+                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+                "InstLine": 90,
+                "InstName": "u_tick_send",
+                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/tick_gen.v",
+                "ModuleLine": 25,
+                "ModuleName": "tick_gen"
+            },
+            {
+                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+                "InstLine": 93,
+                "InstName": "u_tick_control",
+                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/tick_gen.v",
+                "ModuleLine": 25,
+                "ModuleName": "tick_gen"
+            },
+            {
+                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+                "InstLine": 101,
+                "InstName": "u_key",
+                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/key_debounce.v",
+                "ModuleLine": 29,
+                "ModuleName": "key_debounce"
+            },
+            {
+                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+                "InstLine": 125,
+                "InstName": "u_adc",
+                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/adc_par.v",
+                "ModuleLine": 33,
+                "ModuleName": "adc_par"
+            },
+            {
+                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+                "InstLine": 158,
+                "InstName": "u_ang",
+                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ang_calc.v",
+                "ModuleLine": 28,
+                "ModuleName": "ang_calc"
+            },
+            {
+                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+                "InstLine": 167,
+                "InstName": "u_enc",
+                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/encoder_quad.v",
+                "ModuleLine": 33,
+                "ModuleName": "encoder_quad"
+            },
+            {
+                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+                "InstLine": 172,
+                "InstName": "u_speed",
+                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/speed_win.v",
+                "ModuleLine": 19,
+                "ModuleName": "speed_win",
+                "SubInsts": [
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/speed_win.v",
+                        "InstLine": 59,
+                        "InstName": "g_period.u_period",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/speed_win.v",
+                        "ModuleLine": 100,
+                        "ModuleName": "encoder_period_speed"
+                    }
+                ]
+            },
+            {
+                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+                "InstLine": 181,
+                "InstName": "u_uart_rx",
+                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/uart_rx.v",
+                "ModuleLine": 26,
+                "ModuleName": "uart_rx"
+            },
+            {
+                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+                "InstLine": 227,
+                "InstName": "u_cfg",
+                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/cfg_regs.v",
+                "ModuleLine": 31,
+                "ModuleName": "cfg_regs"
+            },
+            {
+                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+                "InstLine": 258,
+                "InstName": "u_ui",
+                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_panel_ctrl.v",
+                "ModuleLine": 30,
+                "ModuleName": "ui_panel_ctrl",
+                "SubInsts": [
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_panel_ctrl.v",
+                        "InstLine": 126,
+                        "InstName": "u_db_sw1s",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/debounce.v",
+                        "ModuleLine": 6,
+                        "ModuleName": "debounce"
+                    },
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_panel_ctrl.v",
+                        "InstLine": 127,
+                        "InstName": "u_db_sw1a",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/debounce.v",
+                        "ModuleLine": 6,
+                        "ModuleName": "debounce"
+                    },
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_panel_ctrl.v",
+                        "InstLine": 128,
+                        "InstName": "u_db_sw1b",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/debounce.v",
+                        "ModuleLine": 6,
+                        "ModuleName": "debounce"
+                    },
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_panel_ctrl.v",
+                        "InstLine": 129,
+                        "InstName": "u_db_sw2s",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/debounce.v",
+                        "ModuleLine": 6,
+                        "ModuleName": "debounce"
+                    },
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_panel_ctrl.v",
+                        "InstLine": 130,
+                        "InstName": "u_db_sw2a",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/debounce.v",
+                        "ModuleLine": 6,
+                        "ModuleName": "debounce"
+                    },
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_panel_ctrl.v",
+                        "InstLine": 131,
+                        "InstName": "u_db_sw2b",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/debounce.v",
+                        "ModuleLine": 6,
+                        "ModuleName": "debounce"
+                    },
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_panel_ctrl.v",
+                        "InstLine": 132,
+                        "InstName": "u_db_sw3s",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/debounce.v",
+                        "ModuleLine": 6,
+                        "ModuleName": "debounce"
+                    },
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_panel_ctrl.v",
+                        "InstLine": 133,
+                        "InstName": "u_db_sw4s",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/debounce.v",
+                        "ModuleLine": 6,
+                        "ModuleName": "debounce"
+                    },
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_panel_ctrl.v",
+                        "InstLine": 134,
+                        "InstName": "u_db_sw5s",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/debounce.v",
+                        "ModuleLine": 6,
+                        "ModuleName": "debounce"
+                    },
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_panel_ctrl.v",
+                        "InstLine": 135,
+                        "InstName": "u_db_sw6s",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/debounce.v",
+                        "ModuleLine": 6,
+                        "ModuleName": "debounce"
+                    },
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_panel_ctrl.v",
+                        "InstLine": 136,
+                        "InstName": "u_db_sw7s",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/debounce.v",
+                        "ModuleLine": 6,
+                        "ModuleName": "debounce"
+                    },
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_panel_ctrl.v",
+                        "InstLine": 847,
+                        "InstName": "u_draw",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_draw.v",
+                        "ModuleLine": 31,
+                        "ModuleName": "ui_draw",
+                        "SubInsts": [
+                            {
+                                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_draw.v",
+                                "InstLine": 154,
+                                "InstName": "u_font",
+                                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/font8x16.v",
+                                "ModuleLine": 14,
+                                "ModuleName": "font8x16"
+                            }
+                        ]
+                    },
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_panel_ctrl.v",
+                        "InstLine": 869,
+                        "InstName": "u_fb",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_fb.v",
+                        "ModuleLine": 17,
+                        "ModuleName": "ui_fb"
+                    },
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/ui_panel_ctrl.v",
+                        "InstLine": 883,
+                        "InstName": "u_screen",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/spi_screen_top.v",
+                        "ModuleLine": 4,
+                        "ModuleName": "spi_screen_top",
+                        "SubInsts": [
+                            {
+                                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/spi_screen_top.v",
+                                "InstLine": 121,
+                                "InstName": "spi_tft_screen_driver_inst",
+                                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/spi_tft_screen_driver.v",
+                                "ModuleLine": 2,
+                                "ModuleName": "spi_tft_screen_driver",
+                                "SubInsts": [
+                                    {
+                                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/spi_tft_screen_driver.v",
+                                        "InstLine": 109,
+                                        "InstName": "spi_tft_screen_flush_inst",
+                                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/spi_tft_screen_flush.v",
+                                        "ModuleLine": 4,
+                                        "ModuleName": "spi_tft_screen_flush"
+                                    },
+                                    {
+                                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/spi_tft_screen_driver.v",
+                                        "InstLine": 131,
+                                        "InstName": "spi_tft_screen_init_inst",
+                                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/spi_tft_screen_init.v",
+                                        "ModuleLine": 4,
+                                        "ModuleName": "spi_tft_screen_init"
+                                    },
+                                    {
+                                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/spi_tft_screen_driver.v",
+                                        "InstLine": 146,
+                                        "InstName": "spi_master_driver_inst",
+                                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/spi_master_driver.v",
+                                        "ModuleLine": 12,
+                                        "ModuleName": "spi_master_driver"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+                "InstLine": 335,
+                "InstName": "u_bal",
+                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/bal_ctl.v",
+                "ModuleLine": 27,
+                "ModuleName": "bal_ctl",
+                "SubInsts": [
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/bal_ctl.v",
+                        "InstLine": 218,
+                        "InstName": "u_rate_fast",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/angle_rate_observer.v",
+                        "ModuleLine": 5,
+                        "ModuleName": "angle_rate_observer"
+                    },
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/bal_ctl.v",
+                        "InstLine": 221,
+                        "InstName": "u_rate_smooth",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/angle_rate_observer.v",
+                        "ModuleLine": 5,
+                        "ModuleName": "angle_rate_observer"
+                    },
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/bal_ctl.v",
+                        "InstLine": 368,
+                        "InstName": "u_position_hold",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/position_hold.v",
+                        "ModuleLine": 3,
+                        "ModuleName": "position_hold"
+                    }
+                ]
+            },
+            {
+                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+                "InstLine": 366,
+                "InstName": "u_swing",
+                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/swingup_ctl.v",
+                "ModuleLine": 5,
+                "ModuleName": "swingup_ctl"
+            },
+            {
+                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+                "InstLine": 440,
+                "InstName": "u_pwm",
+                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/pwm_gen.v",
+                "ModuleLine": 19,
+                "ModuleName": "pwm_gen"
+            },
+            {
+                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+                "InstLine": 444,
+                "InstName": "u_drv",
+                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/tb6612_drv.v",
+                "ModuleLine": 29,
+                "ModuleName": "tb6612_drv"
+            },
+            {
+                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+                "InstLine": 453,
+                "InstName": "u_msg",
+                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/msg_tx.v",
+                "ModuleLine": 30,
+                "ModuleName": "msg_tx",
+                "SubInsts": [
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/msg_tx.v",
+                        "InstLine": 216,
+                        "InstName": "u_pos",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/dig5.v",
+                        "ModuleLine": 24,
+                        "ModuleName": "dig5"
+                    },
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/msg_tx.v",
+                        "InstLine": 225,
+                        "InstName": "u_spd",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/dig4.v",
+                        "ModuleLine": 25,
+                        "ModuleName": "dig4"
+                    },
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/msg_tx.v",
+                        "InstLine": 233,
+                        "InstName": "u_dut",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/dig4.v",
+                        "ModuleLine": 25,
+                        "ModuleName": "dig4"
+                    },
+                    {
+                        "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/msg_tx.v",
+                        "InstLine": 242,
+                        "InstName": "u_ref",
+                        "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/dig5.v",
+                        "ModuleLine": 24,
+                        "ModuleName": "dig5"
+                    }
+                ]
+            },
+            {
+                "InstFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/j280_top.v",
+                "InstLine": 465,
+                "InstName": "u_uart_tx",
+                "ModuleFile": "C:/Users/y1812/Desktop/11_1/proj0/source/proj_fpga/src/uart_tx.v",
+                "ModuleLine": 22,
+                "ModuleName": "uart_tx"
+            }
+        ]
+    }
+]
